@@ -1,9 +1,20 @@
 package view;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -27,7 +38,7 @@ public class Vista extends javax.swing.JFrame {
         this.dificultad = "Facil";
         btn1 = new JButton();
         btn2 = new JButton();
-        btn3 = new JButton();        
+        btn3 = new JButton();         
         initComponents();
         identificarDificultad(this.dificultad);
     }
@@ -39,7 +50,7 @@ public class Vista extends javax.swing.JFrame {
         matriz.add(btn3);
         btn1.setVisible(false);
         btn2.setVisible(false);
-        btn3.setVisible(false);
+        btn3.setVisible(false);       
         
         if(dificultad.compareTo("Facil")==0){
             setSize(512, 676);
@@ -85,7 +96,7 @@ public class Vista extends javax.swing.JFrame {
             y+=tamaño+2;
         }
     }
-    
+
     private class ButtonController implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -104,7 +115,7 @@ public class Vista extends javax.swing.JFrame {
                             mostrarMenu3(i, j);
                         }
                         if(i==filas-1 && j==columnas-1){
-//                            mostrarMenu4(i, j);
+                            mostrarMenu4(i, j);
                         }
                     }
                 }
@@ -120,7 +131,7 @@ public class Vista extends javax.swing.JFrame {
         }
     }
     
-    private void mostrarMenu1(int i, int j){    
+    private void mostrarMenu1(int i, int j){
         if(this.dificultad.compareTo("Facil")==0){
             btn1.setBounds(matrizBotones[i][j].getX()+(tamanioAux*1)/4, matrizBotones[i][j].getY()-(tamanioAux*3)/4-2,(46*3)/4,(46*3)/4);
             btn2.setBounds(matrizBotones[i][j].getX()+tamanioAux+2, matrizBotones[i][j].getY()-(tamanioAux*3)/4-2,(46*3)/4,(46*3)/4);
@@ -167,13 +178,13 @@ public class Vista extends javax.swing.JFrame {
     
     private void mostrarMenu4(int i, int j){    
         if(this.dificultad.compareTo("Facil")==0){
-            btn1.setBounds(matrizBotones[i][j].getX()+tamanioAux+2, matrizBotones[i][j].getY()+(tamanioAux*1)/4,(46*3)/4,(46*3)/4);
-            btn2.setBounds(matrizBotones[i][j].getX()+tamanioAux+2, matrizBotones[i][j].getY()+tamanioAux+2,(46*3)/4,(46*3)/4);
-            btn3.setBounds(matrizBotones[i][j].getX()+(tamanioAux*1)/4, matrizBotones[i][j].getY()+tamanioAux+2,(46*3)/4,(46*3)/4);
+            btn1.setBounds(matrizBotones[i][j].getX(), matrizBotones[i][j].getY()-(tamanioAux*3)/4-2,(46*3)/4,(46*3)/4);
+            btn2.setBounds(matrizBotones[i][j].getX()-(tamanioAux*3)/4-2, matrizBotones[i][j].getY()-(tamanioAux*3)/4-2,(46*3)/4,(46*3)/4);
+            btn3.setBounds(matrizBotones[i][j].getX()-(tamanioAux*3)/4-2, matrizBotones[i][j].getY(),(46*3)/4,(46*3)/4);
         }else{
-            btn1.setBounds(matrizBotones[i][j].getX()+tamanioAux+2, matrizBotones[i][j].getY()-2,(46*3)/4,(46*3)/4);
-            btn2.setBounds(matrizBotones[i][j].getX()+tamanioAux+2, matrizBotones[i][j].getY()+tamanioAux+2,(46*3)/4,(46*3)/4);
-            btn3.setBounds(matrizBotones[i][j].getX()-2, matrizBotones[i][j].getY()+tamanioAux+2,(46*3)/4,(46*3)/4);
+            btn1.setBounds(matrizBotones[i][j].getX(), matrizBotones[i][j].getY()-(tamanioAux+6),(46*3)/4,(46*3)/4);
+            btn2.setBounds(matrizBotones[i][j].getX()-(tamanioAux+6), matrizBotones[i][j].getY()-(tamanioAux+6),(46*3)/4,(46*3)/4);
+            btn3.setBounds(matrizBotones[i][j].getX()-(tamanioAux+6), matrizBotones[i][j].getY(),(46*3)/4,(46*3)/4);
         }
         btn1.setVisible(true);
         btn2.setVisible(true);
